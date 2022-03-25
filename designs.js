@@ -21,7 +21,6 @@
 	}
 	$("td").click(function addColor() {
 		color = $("#colorPicker").val();
-	
 		if ($(this).attr("style")) {
 			$(this).removeAttr("style")
 		} else {
