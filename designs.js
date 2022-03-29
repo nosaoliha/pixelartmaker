@@ -1,30 +1,31 @@
-// Select color input
-// Select size input
-	var height, width, color;
-
-// When size is submitted by the user, call makeGrid()
-	$("#sizePicker").submit(function (event) {
-		event.preventDefault();
-		height = $("#inputHeight").val();
-		width = $("#inputWidth").val();
-		makeGrid(height, width);
+let vertical, horizontal, size, pixel, rainbow;
+	size = $("#sizePicker");
+	pixel = $("#pixelCanvas");
+	
+size.submit(function(grid) {											
+		grid.preventDefault();
+																										
+		let vertical = $("#inputHeight").val();										
+		let horizontal = $("#inputWidth").val();											
+		makeGrid(vertical, horizontal);
 	})
-	function makeGrid(height, width) {
-		$("tr").remove();
+	
+function makeGrid(vertical, horizontal) {
+	$("tr").remove();
 
-// Your code goes here!
-	for (var i = 1; i <= height; i++) {
-		$("#pixelCanvas").append("<tr id=table" + i + "></tr>");
-		for (var j = 1; j <=width; j++) {
-			$("#table" + i).append("<td></td>");
+		for (let x = 0; x < vertical; x++) {												
+			pixel.append("<tr id=table" + x + "></tr>");					
+		for (let y = 0; y < horizontal; y++) {											
+			$("#table" + x).append("<td></td>");							
 		}
 	}
-	$("td").click(function addColor() {
-		color = $("#colorPicker").val();
-		if ($(this).attr("style")) {
-			$(this).removeAttr("style")
-		} else {
-			$(this).attr("style", "background-color:" + color);
-		}
-	})
+	
+$("td").click(function addColor() {
+			let rainbow = $("#colorPicker").val();
+			if ($(this).attr("style")) {
+				$(this).removeAttr("style")
+			} else {
+				$(this).attr("style", "background-color:" + rainbow);
+			}
+		})
 }
