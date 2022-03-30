@@ -1,7 +1,9 @@
+//imports and assigns relevant components to variables.
 let vertical, horizontal, size, pixel, rainbow;
 	size = $("#sizePicker");
 	pixel = $("#pixelCanvas");
-	
+
+//this function uses the size.submit (#sizePicker) to call makeGrid() funtion.
 size.submit(function(grid) {											
 		grid.preventDefault();
 																										
@@ -10,6 +12,7 @@ size.submit(function(grid) {
 		makeGrid(vertical, horizontal);
 	})
 	
+//this function generates a grid and assigns event listeners to all cells.	
 function makeGrid(vertical, horizontal) {
 	$("tr").remove();
 
@@ -20,6 +23,7 @@ function makeGrid(vertical, horizontal) {
 		}
 	}
 	
+//this function changes the color of the clicked cell to the current color.
 $("td").click(function addColor() {
 			let rainbow = $("#colorPicker").val();
 			if ($(this).attr("style")) {
